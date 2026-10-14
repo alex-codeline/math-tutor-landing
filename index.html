@@ -1,0 +1,433 @@
+<!doctype html>
+<!--
+  Проект № 1 — одностраничный сайт репетитора (учебный проект).
+  Персонаж, тексты, цены и условия придуманы. Форма работает в демонстрационном режиме.
+
+  Как читать этот файл:
+  1. <head> — служебная информация (заголовок вкладки, подключение стилей и скрипта).
+  2. <body> — то, что видит посетитель: шапка, 7 разделов и подвал.
+  3. Внешний вид задаётся в styles.css, поведение — в script.js.
+-->
+<html lang="ru"> <!-- lang="ru" сообщает браузеру и программам чтения экрана, что текст русский -->
+<head>
+  <meta charset="UTF-8"> <!-- кодировка: без неё русские буквы могут превратиться в «кракозябры» -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- без этой строки на телефоне сайт будет сильно уменьшен -->
+  <meta name="description" content="Демонстрационный сайт репетитора математики для 5–9 классов: занятия, подготовка к ОГЭ, стоимость и форма обращения. Учебный проект.">
+  <meta name="theme-color" content="#F8F9FC"> <!-- цвет адресной строки в мобильных браузерах -->
+
+  <!-- Open Graph: так страница выглядит, когда ссылкой делятся в мессенджерах и соцсетях -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Мария Лебедева — репетитор математики (учебный проект)">
+  <meta property="og:description" content="Адаптивный одностраничный сайт для вымышленного репетитора. HTML5, CSS3, JavaScript.">
+
+  <title>Мария Лебедева — репетитор математики</title> <!-- заголовок вкладки браузера -->
+
+  <!-- Значок вкладки. Нарисован прямо в коде (SVG), поэтому отдельный файл не нужен -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235266F5'/%3E%3Cpath d='M14 34l7-4 9 20L44 12h10' fill='none' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <!--
+    Маленький скрипт-флаг. Он сразу помечает страницу классом "js".
+    Благодаря этому CSS знает, что JavaScript работает, и может включить мобильное меню.
+    Если JavaScript отключён, меню просто остаётся обычным списком ссылок.
+  -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <link rel="stylesheet" href="styles.css"> <!-- подключаем оформление -->
+  <script src="script.js" defer></script> <!-- подключаем поведение; defer = выполнить после загрузки HTML -->
+</head>
+
+<body>
+  <!-- Ссылка для тех, кто ходит по сайту клавиатурой: позволяет сразу перейти к содержимому. Видна только при фокусе. -->
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- ===================== ШАПКА ===================== -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+
+      <!-- Логотип. Ссылка на #top прокручивает страницу к началу -->
+      <a class="logo" href="#top" aria-label="Математика с Марией — к началу страницы">
+        <span class="logo-mark" aria-hidden="true">√</span> <!-- aria-hidden: значок декоративный, читать его вслух не нужно -->
+        <span>математика <strong>с Марией</strong></span>
+      </a>
+
+      <!-- Кнопка мобильного меню. На компьютере она скрыта в CSS, на телефоне — показывается -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="visually-hidden">Открыть меню</span>
+      </button>
+
+      <!-- Основная навигация. Каждая ссылка ведёт к блоку с таким же id ниже по странице -->
+      <nav class="nav-links" id="site-nav" aria-label="Основная навигация">
+        <a href="#services">Занятия</a>
+        <a href="#process">Как проходят</a>
+        <a href="#about">Обо мне</a>
+        <a href="#prices">Стоимость</a>
+        <a href="#faq">Вопросы</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+
+      <a class="button button-primary button-small nav-cta" href="#contact">Обсудить занятия</a>
+    </div>
+  </header>
+
+  <!-- ===================== ОСНОВНОЕ СОДЕРЖИМОЕ ===================== -->
+  <main id="main">
+
+    <!-- ---------- 1. ПЕРВЫЙ ЭКРАН (Hero) ---------- -->
+    <section class="hero section" id="top">
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+          <!-- На странице должен быть ровно один <h1>: он описывает суть всего сайта -->
+          <h1>Математика без&nbsp;паники&nbsp;— шаг&nbsp;за&nbsp;шагом</h1> <!-- &nbsp; = неразрывный пробел: тире не уедет на начало строки -->
+
+          <p class="hero-text">
+            Помогаю ученикам 5–9 классов разобраться в математике,
+            закрыть пробелы и подготовиться к ОГЭ
+            без зубрёжки и лишнего стресса.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Обсудить занятия</a>
+            <a class="button button-secondary" href="#process">Как проходят занятия</a>
+          </div>
+
+          <!-- Короткие факты. <ul> — маркированный список, <li> — один пункт -->
+          <ul class="hero-tags">
+            <li>5–9 классы</li>
+            <li>Подготовка к ОГЭ</li>
+            <li>Онлайн</li>
+          </ul>
+        </div>
+
+        <!--
+          Декоративная «тетрадная» карточка. Это не картинка, а обычный HTML и CSS.
+          Строки решения появляются по очереди при загрузке (см. styles.css, блок «Анимация первого экрана»).
+        -->
+        <div class="hero-visual">
+          <div class="math-board">
+            <p class="board-topline">
+              <span class="board-dot" aria-hidden="true"></span>
+              Тема занятия: квадратные уравнения
+            </p>
+
+            <p class="board-caption">Сегодня разбираем</p>
+
+            <!-- <var> — переменная в математике; <sup> — верхний индекс (степень) -->
+            <p class="math-equation"><var>x</var><sup>2</sup> + 5<var>x</var> + 6 = 0</p>
+
+            <div class="math-divider"></div>
+
+            <p class="board-caption">Идём по шагам</p>
+
+            <!-- <ol> — нумерованный список: шаги решения идут в строгом порядке -->
+            <ol class="solution">
+              <li class="solution-row">
+                <span class="solution-num">1</span>
+                <span class="solution-body">
+                  <strong>Находим два числа</strong>
+                  <span>Сумма равна −5, произведение равно 6</span>
+                </span>
+              </li>
+              <li class="solution-row">
+                <span class="solution-num">2</span>
+                <span class="solution-body">
+                  <strong>Проверяем</strong>
+                  <span>−2 · (−3) = 6 и −2 + (−3) = −5</span>
+                </span>
+              </li>
+              <li class="solution-row solution-row-answer">
+                <span class="solution-num">3</span>
+                <span class="solution-body">
+                  <strong>Записываем ответ</strong>
+                  <span><var>x</var> = −2 и <var>x</var> = −3</span>
+                </span>
+              </li>
+            </ol>
+
+            <p class="board-note">Ошибки разбираем вместе</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------- 2. УСЛУГИ ---------- -->
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="services-title">Занятия под вашу цель</h2>
+          <p>Можно пройти школьную тему заново, подготовиться к экзамену или разобрать конкретные задания.</p>
+        </div>
+
+        <div class="services-grid">
+
+          <!-- Один шаблон карточки повторяется трижды: меняются только значок, подпись, заголовок и текст -->
+          <article class="service-card">
+            <div class="card-icon card-icon-lavender" aria-hidden="true">
+              <!-- Значок «открытая книга». stroke="currentColor" — линия берёт цвет текста из CSS -->
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+            </div>
+            <p class="card-kicker">5–9 классы</p>
+            <h3>Подтянуть школьную программу</h3>
+            <p>Разбираем темы, которые вызывают трудности, тренируемся на примерах и постепенно закрываем пробелы.</p>
+            <a class="text-link" href="#contact">Обсудить цель</a>
+          </article>
+
+          <article class="service-card">
+            <div class="card-icon card-icon-mint" aria-hidden="true">
+              <!-- Значок «мишень» -->
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <p class="card-kicker">8–9 классы</p>
+            <h3>Подготовка к ОГЭ</h3>
+            <p>Составляем план повторения, разбираем типы заданий и регулярно проверяем, какие темы уже получаются.</p>
+            <a class="text-link" href="#contact">Обсудить цель</a>
+          </article>
+
+          <article class="service-card">
+            <div class="card-icon card-icon-peach" aria-hidden="true">
+              <!-- Значок «лампочка» -->
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5a6 6 0 0 0-12 0c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+            </div>
+            <p class="card-kicker">Любой класс</p>
+            <h3>Разобрать сложный материал</h3>
+            <p>Дроби, уравнения, функции или геометрия — выбираем тему и разбираем её на понятных шагах.</p>
+            <a class="text-link" href="#contact">Обсудить цель</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 3. КАК ПРОХОДЯТ ЗАНЯТИЯ ---------- -->
+    <section class="section section-tint" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="process-title">Как проходят занятия</h2>
+          <p>Без загадок: сначала определяем цель, затем работаем по плану и смотрим на прогресс.</p>
+        </div>
+
+        <!-- Здесь нумерация уместна: этапы действительно идут друг за другом -->
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">1</span>
+            <h3>Знакомимся</h3>
+            <p>Обсуждаем класс, текущие трудности и желаемый результат.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <h3>Составляем план</h3>
+            <p>Выбираем темы и темп занятий под ученика.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <h3>Практикуемся</h3>
+            <p>Решаем задания, разбираем ошибки и закрепляем знания.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ---------- 4. О ПРЕПОДАВАТЕЛЕ ---------- -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container about-grid">
+
+        <div class="about-content">
+          <h2 id="about-title">Математику можно понять, если двигаться последовательно</h2>
+          <p class="about-text">
+            На занятиях важно не просто получить правильный ответ, а понять, почему решение работает.
+            Поэтому мы разбираем логику задачи, отмечаем ошибки и закрепляем материал на похожих примерах.
+          </p>
+
+          <ul class="check-list">
+            <li>Объясняю тему простыми словами.</li>
+            <li>Подстраиваю темп под ученика.</li>
+            <li>Создаю спокойную атмосферу для вопросов.</li>
+          </ul>
+        </div>
+
+        <!-- Карточка преподавателя. Инициалы вместо фотографии: чужое фото выдавать за реального человека нельзя -->
+        <aside class="profile-card" aria-label="Карточка преподавателя">
+          <div class="profile-head">
+            <div class="avatar" aria-hidden="true">МЛ</div>
+            <div>
+              <p class="profile-name">Мария Лебедева</p>
+              <p class="profile-role">Репетитор математики</p>
+            </div>
+          </div>
+
+          <!-- <dl> — список «название — значение» -->
+          <dl class="profile-facts">
+            <div><dt>Классы</dt><dd>5–9</dd></div>
+            <div><dt>Формат</dt><dd>Онлайн, индивидуально</dd></div>
+            <div><dt>Длительность</dt><dd>45 или 60 минут</dd></div>
+          </dl>
+
+          <p class="profile-note">Вымышленный персонаж для учебного проекта.</p>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ---------- 5. СТОИМОСТЬ ---------- -->
+    <section class="section section-white" id="prices" aria-labelledby="prices-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="prices-title">Выберите удобный вариант</h2>
+          <p>Цены ниже условные и приведены только для учебного макета.</p>
+        </div>
+
+        <div class="prices-grid">
+
+          <article class="price-card">
+            <h3>Короткое занятие</h3>
+            <p class="price-duration">45 минут</p>
+            <p class="price-amount">800&nbsp;₽</p>
+            <p class="price-text">Подходит для одной темы или проверки домашнего задания.</p>
+            <a class="button button-secondary" href="#contact">Выбрать формат</a>
+          </article>
+
+          <!-- Средняя карточка выделена классом price-card-featured (рамка индиго и бейдж) -->
+          <article class="price-card price-card-featured">
+            <p class="price-badge">Основной формат</p>
+            <h3>Индивидуальное занятие</h3>
+            <p class="price-duration">60 минут</p>
+            <p class="price-amount">1&nbsp;000&nbsp;₽</p>
+            <p class="price-text">Новая тема, практика и разбор ошибок в спокойном темпе.</p>
+            <a class="button button-primary" href="#contact">Выбрать формат</a>
+          </article>
+
+          <article class="price-card">
+            <h3>Пакет из четырёх занятий</h3>
+            <p class="price-duration">4 × 60 минут</p>
+            <p class="price-amount">3&nbsp;600&nbsp;₽</p>
+            <p class="price-text">Четыре занятия по 60 минут. Стоимость одного занятия — 900 ₽. Экономия 400 ₽ по сравнению с оплатой четырёх занятий по отдельности.</p>
+            <a class="button button-secondary" href="#contact">Выбрать формат</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- 6. ВОПРОСЫ И ОТВЕТЫ ---------- -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+
+        <div class="faq-head">
+          <h2 id="faq-title">Частые вопросы</h2>
+          <p>Отвечаю на то, что обычно хочется узнать до первого занятия.</p>
+        </div>
+
+        <!--
+          <details> и <summary> — встроенный в HTML «аккордеон».
+          Браузер сам раскрывает и сворачивает ответ, JavaScript для этого не нужен.
+        -->
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Для каких классов подходят занятия?</summary>
+            <p>В этом примере сайт рассчитан на учеников 5–9 классов: от дробей и уравнений до подготовки к ОГЭ в 9 классе.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как проходят онлайн-занятия?</summary>
+            <p>Встречаемся по видеосвязи и решаем задачи на общей онлайн-доске. В конце занятия обсуждаем, что получилось и что стоит повторить.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно ли прийти только с одной сложной темой?</summary>
+            <p>Да. Можно разобрать одну тему, например дроби или уравнения, а потом решить, нужны ли ещё занятия.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Гарантирован ли высокий балл на ОГЭ?</summary>
+            <p>Нет. Результат зависит от стартового уровня, регулярности занятий и работы самого ученика. Я не обещаю баллы, но помогаю понять темы и увидеть прогресс.</p>
+          </details>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------- 7. КОНТАКТЫ И ФОРМА ---------- -->
+    <section class="section section-tint" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+
+        <div class="contact-content">
+          <h2 id="contact-title">Расскажите, с чем нужна помощь</h2>
+          <p>
+            Оставьте данные в демонстрационной форме, чтобы посмотреть её поведение.
+            Сейчас форма не отправляет информацию и не сохраняет её.
+          </p>
+
+          <p class="contact-hint-title">Что полезно указать</p>
+          <ul class="check-list">
+            <li>Класс ученика.</li>
+            <li>Тему или задание, которое вызывает трудности.</li>
+            <li>Как с вами удобнее связаться.</li>
+          </ul>
+        </div>
+
+        <!--
+          Форма. Атрибут novalidate отключает стандартные сообщения браузера:
+          проверку и тексты ошибок мы делаем сами в script.js (так сообщения понятнее и на русском).
+          Атрибуты required оставлены для смысла и для случая, если JavaScript не загрузится.
+        -->
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="name">Имя</label>
+              <input id="name" name="name" type="text" autocomplete="given-name" required aria-describedby="name-error">
+              <p class="field-error" id="name-error" hidden></p>
+            </div>
+
+            <div class="field">
+              <label for="grade">Класс ученика</label>
+              <select id="grade" name="grade" required aria-describedby="grade-error">
+                <option value="" selected disabled>Выберите класс</option>
+                <option value="5">5 класс</option>
+                <option value="6">6 класс</option>
+                <option value="7">7 класс</option>
+                <option value="8">8 класс</option>
+                <option value="9">9 класс</option>
+              </select>
+              <p class="field-error" id="grade-error" hidden></p>
+            </div>
+
+            <div class="field field-full"> <!-- field-full: поле занимает всю ширину формы -->
+              <label for="message">Тема или задача <span class="optional">(необязательно)</span></label>
+              <textarea id="message" name="message" rows="4" maxlength="500" placeholder="Например: не получаются уравнения, нужно подготовиться к ОГЭ"></textarea>
+            </div>
+
+            <div class="field field-full">
+              <label for="contact-info">Как с вами связаться</label>
+              <input id="contact-info" name="contact" type="text" autocomplete="off" placeholder="Телефон, почта или Telegram (@имя)" required aria-describedby="contact-info-error">
+              <p class="field-error" id="contact-info-error" hidden></p>
+            </div>
+
+          </div>
+
+          <button class="button button-primary button-wide" type="submit">Отправить заявку</button>
+
+          <!-- Сюда JavaScript выводит итоговое сообщение. role="status" — программы чтения экрана озвучат его сами -->
+          <p class="form-message" id="form-message" role="status" tabindex="-1"></p>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== ПОДВАЛ ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>
+        © <span id="year">2026</span> Мария Лебедева — вымышленный персонаж.
+        Учебный проект: тексты, цены и условия придуманы.
+      </p>
+      <a class="text-link" href="#top">Наверх</a>
+    </div>
+  </footer>
+</body>
+</html>
